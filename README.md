@@ -82,7 +82,10 @@ The release workflow builds and deploys the project by running
 1. `mvn install` and then
 2. `mvn deploy -P release`
 
-Upon successful execution, a new GitHub release is created. The name of the release uses the env variable `PROJECT_NAME` defined for the job `release`. Adjust this variable to your needs. The body of the release is the latest section from the changelog.    
+Upon successful execution, a new GitHub release is created:
+
+- The name of the release uses the env variable `PROJECT_NAME` defined for the job `release` in `release.yml`. Adjust this variable to your needs. 
+- The body of the release is the latest section from the changelog.    
 
 # Scripts
 
