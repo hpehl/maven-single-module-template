@@ -55,9 +55,14 @@ The script `release.sh` starts a new release. To adjust the script to your needs
 ./release <release-version> <next-version>
 ```
 
-Both the `release-version` and the `next-version` have to be semantic versions. 
+The release script verifies
 
-The release script 
+- that you don't have uncommitted changes
+- that both `release-version` and `next-version` are semantic versions
+- that `next-version` is greater than `release-version`
+- that no tag `v<release-version>` exists
+
+If everything is fine, the script
 
 1. bumps the project version to `<release-version>`
 2. updates the header and links in the changelog (there should already be entries made by you!)
