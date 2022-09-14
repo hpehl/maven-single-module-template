@@ -28,7 +28,7 @@
 
     <groupId>io.github.hpehl</groupId>
     <artifactId>maven-single-template</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>Maven Single Template</name>
     <description>Template for a single module project using Maven 3.2.x and Java 11+</description>
     <inceptionYear>2022</inceptionYear>
