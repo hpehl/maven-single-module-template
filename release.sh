@@ -118,6 +118,7 @@ parse_params "$@"
 setup_colors
 
 FINAL_VERSION="${RELEASE_VERSION}.Final"
+GIT_REMOTES=("origin")
 SNAPSHOT_VERSION="${NEXT_VERSION}-SNAPSHOT"
 TAG="v${RELEASE_VERSION}"
 WORKFLOW_URL="https://github.com/hpehl/maven-single-module-template/actions/workflows/release.yml"
@@ -136,9 +137,9 @@ msg ""
 msg "   1. Bump the version to ${CYAN}${FINAL_VERSION}${NOFORMAT}"
 msg "   2. Update the ${CYAN}changelog${NOFORMAT} (there should already be entries in the ${CYAN}Unreleased${NOFORMAT} section!)"
 msg "   3. Create a tag for ${CYAN}${TAG}${NOFORMAT}"
-msg "   4. ${CYAN}Commit${NOFORMAT} and ${CYAN}push${NOFORMAT} to upstream (which will trigger the ${CYAN}release workflow${NOFORMAT} at GitHub)"
+msg "   4. ${CYAN}Commit${NOFORMAT} and ${CYAN}push${NOFORMAT} to remote repositories (which will trigger the ${CYAN}release workflow${NOFORMAT} at GitHub)"
 msg "   5. Bump the version to ${CYAN}${SNAPSHOT_VERSION}${NOFORMAT}"
-msg "   6. ${CYAN}Commit${NOFORMAT} and ${CYAN}push${NOFORMAT} to upstream"
+msg "   6. ${CYAN}Commit${NOFORMAT} and ${CYAN}push${NOFORMAT} to remote repositories"
 msg ""
 echo "Do you wish to continue?"
 select yn in "Yes" "No"; do
@@ -158,15 +159,17 @@ mvn --quiet -DskipModules keepachangelog:release &> /dev/null
 sed -E -i '' -e 's/\[([0-9]+\.[0-9]+\.[0-9]+)\.Final\]/[\1]/g' -e 's/v([0-9]+\.[0-9]+\.[0-9]+)\.Final/v\1/g' CHANGELOG.md
 msg "Push changes"
 git commit --quiet -am "Release ${RELEASE_VERSION}"
-git push --quiet upstream main &> /dev/null
-git push --quiet origin main &> /dev/null
+for remote in "${GIT_REMOTES[@]}"; do
+  git push --quiet "$remote" main &> /dev/null
+done
+
 msg "Push tag"
 git tag "${TAG}"
-git push --quiet --tags upstream main &> /dev/null
 git push --quiet --tags origin main &> /dev/null
 ./versionBump.sh "${SNAPSHOT_VERSION}"
 msg "Push changes"
 git commit --quiet -am "Next is ${NEXT_VERSION}"
-git push --quiet upstream main &> /dev/null
-git push --quiet origin main &> /dev/null
+for remote in "${GIT_REMOTES[@]}"; do
+  git push --quiet "$remote" main &> /dev/null
+done
 msg "Done. Watch the release workflow at ${WORKFLOW_URL}"

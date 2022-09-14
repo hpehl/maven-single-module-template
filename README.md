@@ -48,7 +48,10 @@ The project already fulfills many requirements and recommendations for deploying
 
 ## Release Script
 
-The script `release.sh` starts a new release. To adjust the script to your needs, replace the variable `WORKFLOW_URL`.
+The script `release.sh` starts a new release. You should make the following adjustments:
+
+- specify your git remotes using the array `GIT_REMOTES`. If your working on a forked repository this should probably be `("origin" "upstream")` 
+- adjust the variable `WORKFLOW_URL` to your needs
 
 ```shell
 ./release.sh <release-version> <next-version>
