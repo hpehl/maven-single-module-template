@@ -75,7 +75,7 @@ The GitHub workflow operates fully automated and relies on several secrets that 
 - `OSSRH_USERNAME`: The username for the Sonatype JIRA
 - `OSSRH_PASSWORD`: The password for the Sonatype JIRA
 - `MAVEN_GPG_PASSPHRASE`: The passphrase for your private GPG key
-- `MAVEN_GPG_PRIVATE_KEY`: The private key in ASCII format. You can use a command like `gpg --armor --export-secret-keys 2A79C898 | pbcopy` to export and copy the private key to the clipboard (on macOS). 
+- `MAVEN_GPG_PRIVATE_KEY`: The private key in ASCII format. You can use a command like `gpg --armor --export-secret-keys <key-id> | pbcopy` to export and copy the private key to the clipboard (on macOS). 
 
 The release workflow builds and deploys the project by running 
 
