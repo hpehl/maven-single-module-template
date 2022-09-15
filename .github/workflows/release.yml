@@ -67,7 +67,7 @@ jobs:
         uses: ncipollo/release-action@v1.10.0
         with:
           tag: ${{ steps.get-version.outputs.version }}
-          name: Maven Single Template ${{ steps.get-version.outputs.version-without-v }}.Final
+          name: Maven Single Module Template ${{ steps.get-version.outputs.version-without-v }}.Final
           body: ${{ steps.read-changelog.outputs.changes }}
           draft: false
           prerelease: false
