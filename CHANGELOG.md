@@ -6,11 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
-## [0.0.1] - 2022-09-14
-
 Initial release
 
-<!--
+<!---
 ## Template
 
 ### Added
@@ -40,7 +38,5 @@ Initial release
 ### Upgrades
 
 - for dependency upgrades
--->
+--->
     
-[Unreleased]: https://github.com/hpehl/maven-single-module-template/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/hpehl/maven-single-module-template/compare/vTemplate...v0.0.1
