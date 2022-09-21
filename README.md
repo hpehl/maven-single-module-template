@@ -26,8 +26,8 @@ Template for a single module project using Maven 3.2.x and Java 11+.
 
 1. Clone or copy the repo
 2. Adjust Maven coordinates in `pom.xml`
-3. Adjust `repo.scm.connection` and `repo.scm.url` in `pom.xml`
-4. Adjust organization in `pom.xml`
+3. Adjust name, description, URL, organization and developers in `pom.xml`
+4. Adjust `repo.scm.connection` and `repo.scm.url` in `pom.xml`
 5. Adjust or remove unnecessary plugins/configuration in `pom.xml`
 6. Add dependencies, code, and tests
 
