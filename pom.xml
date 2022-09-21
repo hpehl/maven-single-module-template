@@ -52,6 +52,7 @@
         <url>${repo.scm.url}</url>
         <tag>HEAD</tag>
     </scm>
+mul
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
